@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Información almacenada correctamente</h1>
+<div mat-dialog-content>
+    <ul>
+        <li>
+            <span >&#10003;</span>Nombre: {{data.name}}
+        </li>
+        <li>
+            <span >&#10003;</span>Apellido: {{data.lastName}}
+        </li>
+        <li>
+            <span >&#10003;</span>Documento: {{data.document}}
+        </li>
+        <li>
+            <span >&#10003;</span>Correo electrónico: {{data.email}}
+        </li>
+        <li>
+            <span >&#10003;</span>Genero: {{data.gender}}
+        </li>
+        <li  *ngIf="data.age !== null">
+            <span  *ngIf="data.age !== null">&#10003;</span>Edad: {{data.age}}
+        </li>
+        <li>
+            <span>&#10003;</span>Pasatiempo: {{data.hobby}}
+        </li>
+    </ul>
+
+</div>

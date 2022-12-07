@@ -1,0 +1,83 @@
+<div class="flex flex-col flex-auto mt-8 bg-card shadow rounded overflow-hidden">
+    <h1 class="text-3xl font-bold underline text-center">
+        Prueba Angular
+    </h1>
+    <form [formGroup]="exampleForm" autocomplete="off" (ngSubmit)="next()" class="example-form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input type="text" formControlName="name" matInput placeholder="Nombre" />
+        </mat-form-field>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['name'].touched && exampleForm.controls['name'].errors">
+            {{ 'Campo requerido.'}}
+        </small>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input type="text" formControlName="lastName" matInput placeholder="Apellido" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Documento</mat-label>
+            <input type="text" formControlName="document" matInput placeholder="Documento de identidad" />
+        </mat-form-field>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['document'].touched && exampleForm.controls['document'].errors">
+            {{ 'Campo requerido.'}}
+        </small>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input type="text" formControlName="email" matInput placeholder="Correo Electrónico" />
+        </mat-form-field>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['email'].touched && exampleForm.controls['email'].errors">
+            {{ 'El correo tiene un formato inválido.'}}
+        </small>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Género</mat-label>
+            <mat-select formControlName="gender" (selectionChange)="changeGender()">
+                <mat-option *ngFor="let gender of genders" [value]=gender.value>
+                    {{gender.type}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['gender'].touched && exampleForm.controls['gender'].errors">
+            {{ 'Campo requerido.'}}
+        </small>
+
+        <mat-form-field appearance="outline" *ngIf="masculino">
+            <mat-label>Edad</mat-label>
+            <input type="number" formControlName="age" max=99 matInput placeholder="Edad" />
+        </mat-form-field>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['age'].touched && exampleForm.controls['age'].errors">
+            {{ 'Edad no tiene un formato inválido.'}}
+        </small>
+        <br><br>
+
+        <mat-label>Pasatiempo</mat-label>
+        <br><br>
+        <mat-radio-group formControlName="hobby" aria-label="¿Pasatiempo?">
+            <mat-radio-button value="Leer">Leer</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="Caminar">Caminar</mat-radio-button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-radio-button value="Dormir">Dormir</mat-radio-button>
+        </mat-radio-group>
+        <small class="text-red-600/75"
+            *ngIf="exampleForm.controls['hobby'].touched && exampleForm.controls['hobby'].errors">
+            {{ 'Seleccione un pasatiempo'}}
+        </small>
+
+        <div footer>
+            <div class="row justify-content-center" style="text-align: center;">
+                <div class="col-md-2 col-xs-12">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!exampleForm.valid"
+                        id="submit">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
